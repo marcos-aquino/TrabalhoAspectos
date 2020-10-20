@@ -1,76 +1,64 @@
 #########################################################
 #   Trabalho DCC146 - Aspectos Teoricos da Computacao   #
 # Grupo:                                                #
+# Ian Couto - 201876002                                 #
 # Marcos Aquino - 201276024                             #
-# Matheus Queiroz - 201776030                           #
-# Pedro Bellotti - 201676043                            #
 #########################################################
 
 import os
-import validacaoTags as valida
-import gerenciaArquivo as arquivo
-import fabricaAutomato as fabrica
-import divisaoTags as divide
 
-if __name__ == "__main__":
-    conjunto_tags = [] #Conjunto de tags validas (tags invalidas nao sao armazenadas)
-    conjunto_automatos = [] #Conjunto de automatos criados a partir das tags
-    texto_divisao = [] #Conjunto de linhas lida do arquivo para ser dividida usando as tags
-    caminho_salvar = '' #Caminho para salvar a divisao de tags (inicialmente nenhum)
+def printMenu():
+    print("\nComando|                           Descrição                           |Exemplo")
+    print(":d     |realiza a divisão em tags da string do arquivo informado       |:d input.txt")
+    print(":c     |carrega um arquivo com definições de tags                      |:c tags.lex")
+    print(":o     |especifica o caminho do arquivo de saída para a divisão em tags|:o output.txt")
+    print(":p     |realiza a divisão em tags da entrada informada                 |:p x=1037")
+    print(":a     |Lista as definições formais dos autômatos em memória           |:a")
+    print(":l     |Lista as definições de tag válidas                             |:q")
+    print(":q     |sair do programa                                               |:q")
+    print(":s     |salvar as tags                                                 |:s file.txt\n")
 
-    #Le entradas do usuario ate que o comando :q seja digitado
-    while True:
+#Le entradas do usuario ate que o comando :q seja digitado
+while True:
+    printMenu()
+    entrada = input()
+    while not entrada: #Evita erro de linha em branco
         entrada = input()
-        while not entrada: #Evita erro de linha em branco
-            entrada = input()
-        #Reconhece os comandos iniciados com ':'
-        if entrada[0] == ':':
-            comando = entrada.split()
-            if comando[0] == ':q':
-                print ('[INFO] Encerrando programa.')
-                quit()
-            elif comando[0] == ':s':
-                if len(comando) != 2:
-                    print ('[WARN] Este comando precisa de 1 parametro!')
-                else:
-                    arquivo.salvaArquivo(comando[1], conjunto_tags)
-            elif comando[0] == ':l':
-                if len(comando) != 2:
-                    print ('[WARN] Este comando precisa de 1 parametro!')
-                else:
-                    importa = arquivo.importaArquivo(comando[1], conjunto_tags)
-                    #Criando automatos para todas as tags lidas
-                    if (importa):
-                        for tag in conjunto_tags:
-                            auto = fabrica.criaAutomato(tag)
-                            if (auto != 0):
-                                conjunto_automatos.append(auto)
-            elif comando[0] == ':f':
-                if len(comando) != 2:
-                    print ('[WARN] Este comando precisa de 1 parametro!')
-                else:
-                    if (arquivo.importaDivisao(comando[1], texto_divisao)):
-                        #Faz a divisao em tags de todos as linhas do texto
-                        divide.divideTagTexto(texto_divisao, conjunto_automatos, caminho_salvar)
-            elif comando[0] == ':o':
-                if len(comando) != 2:
-                    print ('[WARN] Este comando precisa de 1 parametro!')
-                else:
-                    caminho_salvar = comando[1]
-                    if os.path.isfile(caminho_salvar):
-                        print('[WARN] O arquivo', caminho_salvar, 'ja existe e as tags serao salvas no final do arquivo!')
-            elif comando[0] == ':p':
-                if len(comando) < 2:
-                    print ('[WARN] Este comando precisa de pelo menos 1 parametro!')
-                else:
-                    divide.divideTag(comando[1:], conjunto_automatos, caminho_salvar)
+    #Reconhece os comandos iniciados com ':'
+    if entrada[0] == ':':
+        comando = entrada.split()
+        if comando[0] == ':d':
+            if len(comando) != 2:
+                print ('[WARWING] Este comando precisa de 1 parametro!')
             else:
-                print ('[ERROR] Comando invalido!')
-        #Usuario digitou uma tag (do tipo VAR: ab+c+x+) diretamente e ela precisa ser validada
-        else:
-            if valida.verificaFormato(entrada, conjunto_tags):
-                if valida.validaTag(entrada):
-                    conjunto_tags.append(entrada+'\n') #Salva a tag lida
-                    auto = fabrica.criaAutomato(entrada) #Cria um automato com a tag
-                    if (auto != 0): #Salva o automato na lista caso ele tenha sido criado corretamente
-                        conjunto_automatos.append(auto)
+                print("[INFO] executar comando :d não implementado")
+        elif comando[0] == ':c':
+            if len(comando) != 2:
+                print ('[WARWING] Este comando precisa de 1 parametro!')
+            else:
+                print("[INFO] executar comando :c não implementado")
+        elif comando[0] == ':o':
+            if len(comando) != 2:
+                print ('[WARWING] Este comando precisa de 1 parametro!')
+            else:
+                print("[INFO] executar comando :o não implementado")
+        elif comando[0] == ':p':
+            if len(comando) != 2:
+                print ('[WARWING] Este comando precisa de 1 parametro!')
+            else:
+                print("[INFO] executar comando :p não implementado")
+        elif comando[0] == ':a':
+            print("[INFO] executar comando :a não implementado")
+        elif comando[0] == ':l':
+            print("[INFO] executar comando :l não implementado")
+        elif comando[0] == ':q':
+            print("[INFO] executar comando :q não implementado")
+            quit()
+        elif comando[0] == ':s':
+            if len(comando) != 2:
+                print ('[WARWING] Este comando precisa de 1 parametro!')
+            else:
+                print("executar comando :s não implementado")
+    #Usuario digitou uma tag (do tipo VAR: ab+c+x+) diretamente e ela precisa ser validada
+    else:
+        print("tag não reconhecida")
