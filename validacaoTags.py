@@ -1,8 +1,9 @@
-#########################################################
-#   Trabalho DCC146 - Aspectos Teoricos da Computacao   #
+
+#   Trabalho de Aspectos Teoricos da Computacao         #
 # Grupo:                                                #
-# Marcos Aquino                                         #
-#########################################################
+# Ian Couto - 201876002                                 #
+# Marcos Aquino - 201276024                             #
+# Walkíria Garcia - 201776042                           #
 
 #Faz a validacao de uma tag
 def validaTag (entrada):

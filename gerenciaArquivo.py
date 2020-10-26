@@ -1,8 +1,9 @@
-#########################################################
-#   Trabalho DCC146 - Aspectos Teoricos da Computacao   #
+
+#   Trabalho de Aspectos Teoricos da Computacao         #
 # Grupo:                                                #
-# Marcos Aquino                                         #
-#########################################################
+# Ian Couto - 201876002                                 #
+# Marcos Aquino - 201276024                             #
+# Walkíria Garcia - 201776042                           #
 
 import validacaoTags as valida
 import os
@@ -31,3 +32,14 @@ def salvaArquivo (nomeArquivo, tags):
         print ('[INFO] As definicoes de tags foram salvas')
     except(IOError):
         print ("[WARN] Erro ao salvar o arquivo:", nomeArquivo)
+
+#Carrega um arquivo com as definições de tags
+def carregaTags(nomeArquivo):
+    try:
+        arquivo = open(nomeArquivo, 'r')
+        for linha in arquivo:
+            print(linha)
+        arquivo.close()
+
+    except(IOError):
+        print ("[WARN] Erro ao abrir o arquivo:", nomeArquivo)
