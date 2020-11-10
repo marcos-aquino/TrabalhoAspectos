@@ -32,14 +32,3 @@ def salvaArquivo (nomeArquivo, tags):
         print ('[INFO] As definicoes de tags foram salvas')
     except(IOError):
         print ("[WARN] Erro ao salvar o arquivo:", nomeArquivo)
-
-#Carrega um arquivo com as definições de tags
-def carregaTags(nomeArquivo):
-    try:
-        arquivo = open(nomeArquivo, 'r')
-        for linha in arquivo:
-            print(linha)
-        arquivo.close()
-
-    except(IOError):
-        print ("[WARN] Erro ao abrir o arquivo:", nomeArquivo)

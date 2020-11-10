@@ -39,10 +39,8 @@ while True:
                 else:
                     arquivo.salvaArquivo(comando[1], conjunto_tags)
             elif comando[0] == ':l':
-                if len(comando) != 2:
-                    print ('[WARN] Este comando precisa de 1 parametro!')
-                else:
-                    arquivo.importaArquivo(comando[1], conjunto_tags)
+                for tag in conjunto_tags:
+                    print (tag)
             elif comando[0] == ':a':
                 print ('[INFO] Comando para listar as definições formais dos autômatos em memória ainda nao implementado!')
             elif comando[0] == ':c':
@@ -50,7 +48,7 @@ while True:
                 if len(comando) != 2:
                     print ('[WARN] Este comando precisa de 1 parametro!')
                 else:
-                    arquivo.carregaTags(comando[1])
+                    arquivo.importaArquivo(comando[1], conjunto_tags)
 
                 #print ('[INFO] Comando para carregar um arquivo com definições de tags ainda nao implementado!')                
             else:
